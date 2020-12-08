@@ -7,6 +7,7 @@ const port = 5000;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+require('dotenv').config()
 
 const serviceAccount = require("./burj-al-arab-ishad-firebase-adminsdk-ope80-554729269d.json");
 
@@ -17,7 +18,7 @@ admin.initializeApp({
 
 const MongoClient = require("mongodb").MongoClient;
 const uri =
-  "mongodb+srv://ishadDB:5000cent@cluster0.gi4fd.mongodb.net/BurjAlArab?retryWrites=true&w=majority";
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.gi4fd.mongodb.net/BurjAlArab?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -41,17 +42,22 @@ client.connect((err) => {
         .then((decodedToken) => {
           const tokenEmail = decodedToken.email;
           const queryEmail = req.query.email;
-          console.log(tokenEmail, queryEmail)
           if (tokenEmail == queryEmail) {
             bookings.find({ email: req.query.email })
               .toArray((err, documents) => {
                 res.send(documents);
               });
           }
+          else{
+            res.status(401).send("Unauthorized ascess.");
+          }
         })
         .catch((error) => {
-          // Handle error
+          res.status(401).send("Unauthorized ascess.");
         });
+    }
+    else{
+      res.status(401).send("Unauthorized ascess.")
     }
   });
 });

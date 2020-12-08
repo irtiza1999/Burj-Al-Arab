@@ -21,6 +21,7 @@ const Login = () => {
       .currentUser.getIdToken(/* forceRefresh */ true)
       .then(function (idToken) {
         sessionStorage.setItem("token", idToken);
+        history.replace(from);
       })
       .catch(function (error) {
         // Handle error
@@ -37,7 +38,6 @@ const Login = () => {
         const signedInUser = { name: displayName, email };
         setLoggedInUser(signedInUser);
         storeAuthToken();
-        history.replace(from);
       })
       .catch(function (error) {
         var errorCode = error.code;

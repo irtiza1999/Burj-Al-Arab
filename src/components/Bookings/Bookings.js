@@ -26,13 +26,13 @@ const Bookings = () => {
     <div style={{ padding: "20px" }}>
       <h3>You have {bookings.length} bookings.</h3>
       {bookings.map((book) => (
-        <li>
+        <li key={book.id}>
           {book.name} from: {new Date(book.checkIn).toDateString("dd/MM/yyyy")}{" "}
           To: {new Date(book.checkOut).toDateString("dd/MM/yyyy")}
         </li>
       ))}
     </div>
-  );
+  ); 
 };
 
 export default Bookings;
