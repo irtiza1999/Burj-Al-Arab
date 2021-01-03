@@ -6,7 +6,7 @@ Burj-Al-Arab is a simple hotel room booking website. Where users can book their 
 
 ---
 
-## **Languager & technologies used**
+## **Language & technologies used**
 * JavaScript
 * ReactJS
 * NodeJS
