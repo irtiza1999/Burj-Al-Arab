@@ -1,5 +1,7 @@
 # **Burj Al Arab**
 
+![alt text](https://www.dl.dropboxusercontent.com/s/ah3itjccuuzv9zs/burj.png?dl=0)
+
 Burj-Al-Arab is a simple hotel room booking website. Where users can book their rooms for individual dates and also see their all bookings.
 <br />
 **Sorry :) I did not deployed a live website yet. But will do it as soon as possible.**
